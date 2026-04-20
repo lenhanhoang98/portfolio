@@ -198,6 +198,5 @@ export const content = {
       link: 'Direct Link',
     },
   },
-  footer: '© 2024 NHAN HOANG. Crafting experiences with code.',
 }
 
