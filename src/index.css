@@ -14,6 +14,7 @@
   --radius: 14px;
   --radius-sm: 10px;
   --container: 1240px;
+  --header-height: 74px; /* 14px padding * 2 + ~46px text = ~74px */
 
   font-family: Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   text-rendering: geometricPrecision;
@@ -28,6 +29,7 @@
 html {
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height); /* Matches header height for scroll snapping */
 }
 
 html,
@@ -50,6 +52,8 @@ body {
     radial-gradient(1100px 680px at 18% 10%, rgba(75, 147, 163, 0.25), transparent 60%),
     radial-gradient(900px 600px at 86% 15%, rgba(97, 177, 168, 0.14), transparent 60%),
     linear-gradient(180deg, var(--bg-top), var(--bg-mid) 35%, var(--bg-bottom) 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
 a {
@@ -275,12 +279,13 @@ textarea {
 .snap-section {
   scroll-snap-align: start;
   scroll-snap-stop: always;
-  height: 100vh;
+  min-height: calc(100vh - var(--header-height));
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
-  padding-top: 72px; /* Precise height of fixed header to offset content */
+  /* Instead of extreme padding, we rely on the flex centering and exact height */
+  padding-top: 20px;
   padding-bottom: 20px;
 }
 
@@ -324,10 +329,10 @@ textarea {
 
 /* Skills */
 .skillsGrid {
-  margin-top: 14px;
+  margin-top: 24px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  gap: 20px;
 }
 
 .skillCard {
@@ -337,8 +342,8 @@ textarea {
   background: linear-gradient(180deg, rgba(22, 57, 67, 0.78), rgba(12, 28, 34, 0.66));
   border: 1px solid rgba(235, 249, 255, 0.10);
   box-shadow: 0 18px 42px rgba(0, 0, 0, 0.33);
-  padding: 32px 18px 24px;
-  min-height: 220px;
+  padding: 24px 18px 20px;
+  min-height: 190px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -532,9 +537,11 @@ textarea {
   display: flex;
   flex-direction: column;
   gap: 32px;
-  max-height: calc(100vh - 200px); /* Adjust to fit below heading & header */
+  /* Leaves room for the header + section title + section bottom padding */
+  max-height: calc(100vh - var(--header-height) - 160px); 
   overflow-y: auto;
   padding-right: 12px;
+  padding-bottom: 20px; /* Small safe area, no need for massive padding anymore */
   /* Thin custom scrollbar */
   scrollbar-width: thin;
   scrollbar-color: rgba(215, 183, 115, 0.3) transparent;
@@ -1058,3 +1065,109 @@ textarea {
   }
 }
 
+/* Contact Bubble */
+.contactBubbleWrap {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 999;
+  display: flex;
+  flex-direction: column-reverse; /* Button at bottom, list grows up */
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.contactBubbleBtn {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(215, 183, 115, 1), rgba(201, 164, 84, 1));
+  border: none;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 20px rgba(215, 183, 115, 0.4);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0c151a;
+  font-size: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.contactBubbleBtn .icon-default,
+.contactBubbleBtn .icon-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contactBubbleBtn .icon-close {
+  opacity: 0;
+  transform: scale(0.5) rotate(-90deg);
+  font-size: 24px;
+}
+
+.contactBubbleBtn.isOpen .icon-default {
+  opacity: 0;
+  transform: scale(0.5) rotate(90deg);
+}
+
+.contactBubbleBtn.isOpen .icon-close {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+.contactBubbleList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  transform-origin: bottom right;
+}
+
+.bubbleItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(18, 41, 49, 0.95);
+  padding: 8px 14px 8px 18px; /* 14px right padding perfectly centers the 36px icon above the 64px main button */
+  border-radius: 30px;
+  border: 1px solid rgba(235, 249, 255, 0.15);
+  color: rgba(244, 252, 255, 0.95);
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.bubbleItem:hover {
+  background: rgba(26, 60, 70, 0.98);
+  transform: translateX(-8px) scale(1.02);
+  border-color: rgba(215, 183, 115, 0.6);
+}
+
+.bubbleItem__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0c151a;
+  font-size: 16px;
+}
+
+.bubbleItem--phone .bubbleItem__icon {
+  background: #6fe08e;
+}
+
+.bubbleItem--email .bubbleItem__icon {
+  background: #ffcf6d;
+}
+
+.bubbleItem--linkedin .bubbleItem__icon {
+  background: #56a7ff;
+}

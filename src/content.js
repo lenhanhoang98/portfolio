@@ -3,7 +3,6 @@ export const content = {
     { id: 'about', label: 'About' },
     { id: 'skills', label: 'My Skills' },
     { id: 'experience', label: 'Experience' },
-    { id: 'contact', label: 'Contact' },
   ],
   hero: {
     intro: "I'M",

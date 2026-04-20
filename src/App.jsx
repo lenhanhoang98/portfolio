@@ -118,6 +118,45 @@ function copy(text) {
   textarea.remove()
 }
 
+function ContactBubble() {
+  const [isOpen, setIsOpen] = useState(false)
+
+  return (
+    <div className="contactBubbleWrap">
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="contactBubbleList"
+            initial={{ opacity: 0, y: 30, scale: 0.8 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 30, scale: 0.8 }}
+            transition={{ type: 'spring', stiffness: 350, damping: 25 }}
+          >
+            <a href={'tel:' + content.contact.info.phone.replace(/[^0-9+]/g, '')} className="bubbleItem bubbleItem--phone" aria-label="Phone">
+               <span className="bubbleItem__txt">{content.contact.info.phone}</span> <div className="bubbleItem__icon"><FaPhone /></div> 
+            </a>
+            <a href={'mailto:' + content.contact.info.email} className="bubbleItem bubbleItem--email" aria-label="Email">
+               <span className="bubbleItem__txt">{content.contact.info.email}</span> <div className="bubbleItem__icon"><FaEnvelope /></div> 
+            </a>
+            <a href={content.contact.info.social.includes('in') ? 'https://linkedin.com/in/lenhanhoang98' : '#'} target="_blank" rel="noreferrer" className="bubbleItem bubbleItem--linkedin" aria-label="LinkedIn">
+               <span className="bubbleItem__txt">LinkedIn</span> <div className="bubbleItem__icon"><FaLinkedinIn /></div> 
+            </a>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <motion.button
+        className={'contactBubbleBtn ' + (isOpen ? 'isOpen' : '')}
+        onClick={() => setIsOpen(!isOpen)}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <div className="icon-default"><FaEnvelope /></div>
+        <div className="icon-close">✕</div>
+      </motion.button>
+    </div>
+  )
+}
+
 export default function App() {
   const [active, setActive] = useState('about')
   const [isGalleryOpen, setIsGalleryOpen] = useState(false)
@@ -372,124 +411,10 @@ export default function App() {
           </motion.div>
         </section>
 
-        <section className="section container snap-section" id="contact">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: false }}
-              transition={{ duration: 0.8 }}
-            >
-              <SectionHeading title="Contact Me" />
-              <div className="contactGrid">
-                <div className="contactForm">
-                  <input placeholder={content.contact.form.name} />
-                  <input placeholder={content.contact.form.email} />
-                  <textarea placeholder={content.contact.form.message} rows={5} />
-                  <button className="btn btn--gold" type="button">
-                    {content.contact.form.send}
-                  </button>
-                </div>
-
-                <div className="contactInfoGrid">
-                  <motion.div
-                    className="infoCard"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    whileHover={{ y: -6, backgroundColor: 'rgba(26, 68, 80, 0.45)' }}
-                    viewport={{ once: false }}
-                    transition={{ duration: 0.5, delay: 0 }}
-                  >
-                    <div className="infoCard__head">
-                      <div className="infoCard__title">
-                        <FaEnvelope />
-                        Email
-                      </div>
-                    </div>
-                    <div className="infoCard__value">{content.contact.info.email}</div>
-                    <button
-                      className="infoCard__btn"
-                      type="button"
-                      onClick={() => copy(content.contact.info.email)}
-                    >
-                      {content.contact.actions.copy}
-                    </button>
-                  </motion.div>
-
-                  <motion.div
-                    className="infoCard"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    whileHover={{ y: -6, backgroundColor: 'rgba(26, 68, 80, 0.45)' }}
-                    viewport={{ once: false }}
-                    transition={{ duration: 0.5, delay: 0.1 }}
-                  >
-                    <div className="infoCard__head">
-                      <div className="infoCard__title">
-                        <FaPhone />
-                        Phone
-                      </div>
-                    </div>
-                    <div className="infoCard__value">{content.contact.info.phone}</div>
-                    <button
-                      className="infoCard__btn"
-                      type="button"
-                      onClick={() => copy(content.contact.info.phone)}
-                    >
-                      {content.contact.actions.copy}
-                    </button>
-                  </motion.div>
-
-                  <motion.div
-                    className="infoCard"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    whileHover={{ y: -6, backgroundColor: 'rgba(26, 68, 80, 0.45)' }}
-                    viewport={{ once: false }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                  >
-                    <div className="infoCard__head">
-                      <div className="infoCard__title">
-                        <FaLocationDot />
-                        Location
-                      </div>
-                    </div>
-                    <div className="infoCard__value">{content.contact.info.location}</div>
-                  </motion.div>
-
-                  <motion.div
-                    className="infoCard"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    whileHover={{ y: -6, backgroundColor: 'rgba(26, 68, 80, 0.45)' }}
-                    viewport={{ once: false }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
-                  >
-                    <div className="infoCard__head">
-                      <div className="infoCard__title">
-                        <FaGithub />
-                        Social
-                      </div>
-                    </div>
-                    <div className="infoCard__social">
-                      <a href="#" aria-label="GitHub">
-                        <FaGithub />
-                      </a>
-                      <a href="#" aria-label="LinkedIn">
-                        <FaLinkedinIn />
-                      </a>
-                      <a href="#" aria-label="Email">
-                        <FaEnvelope />
-                      </a>
-                    </div>
-                    <button className="infoCard__btn" type="button">
-                      {content.contact.actions.link}
-                    </button>
-                  </motion.div>
-                </div>
-              </div>
-            </motion.div>
-        </section>
+        
       </main>
+
+      <ContactBubble />
 
       <footer className="footer">
         <div className="container">
