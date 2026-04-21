@@ -27,6 +27,7 @@ import { content } from './content'
 import profileUrl from './assets/profile.png'
 import heroLinesUrl from './assets/hero-lines.svg'
 import './index.css'
+import cvUrl from './assets/CV_HoangLeNhan.pdf'
 
 const ICONS = {
   react: FaReact,
@@ -133,13 +134,13 @@ function ContactBubble() {
             transition={{ type: 'spring', stiffness: 350, damping: 25 }}
           >
             <a href={'tel:' + content.contact.info.phone.replace(/[^0-9+]/g, '')} className="bubbleItem bubbleItem--phone" aria-label="Phone">
-               <span className="bubbleItem__txt">{content.contact.info.phone}</span> <div className="bubbleItem__icon"><FaPhone /></div> 
+              <span className="bubbleItem__txt">{content.contact.info.phone}</span> <div className="bubbleItem__icon"><FaPhone /></div>
             </a>
             <a href={'mailto:' + content.contact.info.email} className="bubbleItem bubbleItem--email" aria-label="Email">
-               <span className="bubbleItem__txt">{content.contact.info.email}</span> <div className="bubbleItem__icon"><FaEnvelope /></div> 
+              <span className="bubbleItem__txt">{content.contact.info.email}</span> <div className="bubbleItem__icon"><FaEnvelope /></div>
             </a>
-            <a href={content.contact.info.social.includes('in') ? 'https://linkedin.com/in/lenhanhoang98' : '#'} target="_blank" rel="noreferrer" className="bubbleItem bubbleItem--linkedin" aria-label="LinkedIn">
-               <span className="bubbleItem__txt">LinkedIn</span> <div className="bubbleItem__icon"><FaLinkedinIn /></div> 
+            <a href={content.contact.info.links.linkedin} target="_blank" rel="noreferrer" className="bubbleItem bubbleItem--linkedin" aria-label="LinkedIn">
+              <span className="bubbleItem__txt">LinkedIn</span> <div className="bubbleItem__icon"><FaLinkedinIn /></div>
             </a>
           </motion.div>
         )}
@@ -231,18 +232,18 @@ export default function App() {
               </div>
               <div className="hero__role">{content.hero.role}</div>
               <p className="hero__summary">{content.hero.summary}</p>
-              <button className="btn btn--gold" type="button">
+              <a href={cvUrl} download="CV_HoangLeNhan.pdf" className="btn btn--gold">
                 <FaDownload />
                 {content.hero.cta}
-              </button>
+              </a>
               <div className="hero__social">
-                <a className="socialBtn" href="#" aria-label="GitHub">
+                <a className="socialBtn" href={content.contact.info.links.github} target="_blank" rel="noreferrer" aria-label="GitHub">
                   <FaGithub />
                 </a>
-                <a className="socialBtn" href="#" aria-label="LinkedIn">
+                <a className="socialBtn" href={content.contact.info.links.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
                   <FaLinkedinIn />
                 </a>
-                <a className="socialBtn" href="#" aria-label="Email">
+                <a className="socialBtn" href={'mailto:' + content.contact.info.email} aria-label="Email">
                   <FaEnvelope />
                 </a>
               </div>
@@ -317,11 +318,6 @@ export default function App() {
                 <div className="experienceCard">
                   <div className="experienceCard__top">
                     <div className="experienceCard__role">{exp.role}</div>
-                    <div className="experienceCard__right">
-                      <div className="experienceCard__logo" aria-hidden="true">
-                        <span>{exp.company.charAt(0)}</span>
-                      </div>
-                    </div>
                   </div>
 
                   <div className="experienceCard__company">{exp.company}</div>
@@ -411,7 +407,7 @@ export default function App() {
           </motion.div>
         </section>
 
-        
+
       </main>
 
       <ContactBubble />

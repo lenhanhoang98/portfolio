@@ -7,13 +7,12 @@ export const content = {
   hero: {
     intro: "I'M",
     name: 'NHAN HOANG',
-    role: 'Front-end Developer',
     summary:
       'Front-end Developer.',
     cta: 'Download CV',
   },
   about:
-    "With over 2 years of proven experience, I'm passionate about building robust and user-centric web applications. Currently focused on (specific area).",
+    "A results-driven Front-end Developer with a solid foundation in Software Implementation Consulting and Full-stack Development. I specialize in building high-performance web applications using ReactJS/Next.js, with a proven track record of delivering complex digital portals for government and international clients. My unique background at VNPT allows me to bridge the gap between technical implementation and user-centric design, ensuring every product is not only functional but also highly scalable. I am passionate about creating seamless UI/UX and dedicated to driving digital transformation through innovative web solutions.",
   skills: [
     {
       key: 'react',
@@ -105,6 +104,22 @@ export const content = {
       tags: ['WordPress', 'Freelance', 'E-commerce', 'Education Sites'],
     },
     {
+      range: '2024',
+      role: 'Software Developer',
+      company: 'VNPT Information Technology Center - Full time',
+      bullets: [
+        'Custom Web Builder Integration: Leveraged GrapesJS to develop a specialized drag-and-drop engine, empowering non-technical officials to create and manage dynamic landing pages and festival promotions.',
+        'Administrative CMS: Built robust management dashboards using Ant Design to handle sensitive data, including religious organization profiles, ethnic community policies, and heritage site documentation.',
+        'Interactive Discovery Experience: Developed responsive front-end modules featuring interactive maps, 3D/360-degree virtual tours, and optimized multimedia galleries to enhance user exploration.',
+        'Performance & Accessibility: Ensured strict compliance with government standards for accessibility (WCAG) and optimized performance for high-traffic public access.',
+      ],
+      keyProjects: [
+        'Ho Chi Minh City Department of Ethnic Minorities and Religions Portal',
+        'Ho Chi Minh City Department of Tourism Portal',
+      ],
+      tags: ['Front-end Developer', 'React', 'Ant Design'],
+    },
+    {
       range: '2022 - 2024',
       role: 'Software Implementation Consultant',
       company: 'VNPT Information Technology Center - Full time',
@@ -123,7 +138,7 @@ export const content = {
         'Social Security application – ASXH (2023-2024)',
         'Intelligent Operations Center (IOC) – Binh Chanh District (2022-2023)',
       ],
-      tags: ['Software Implementation', 'Customer Success', 'ERP', 'VNPT'],
+      tags: ['Software Implementation', 'Customer Success', 'ERP'],
     },
 
   ],
@@ -192,6 +207,10 @@ export const content = {
       phone: '(+84) 382960160',
       location: 'District 5, Ho Chi Minh City, Viet Nam',
       social: ['gh', 'in', 'mail'],
+      links: {
+        github: 'https://github.com/lenhanhoang98',
+        linkedin: 'https://www.linkedin.com/in/nhanhoang98/',
+      }
     },
     actions: {
       copy: 'Click-to-copy',

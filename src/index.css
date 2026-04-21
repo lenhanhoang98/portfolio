@@ -14,7 +14,8 @@
   --radius: 14px;
   --radius-sm: 10px;
   --container: 1240px;
-  --header-height: 74px; /* 14px padding * 2 + ~46px text = ~74px */
+  --header-height: 74px;
+  /* 14px padding * 2 + ~46px text = ~74px */
 
   font-family: Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   text-rendering: geometricPrecision;
@@ -29,14 +30,17 @@
 html {
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
-  scroll-padding-top: var(--header-height); /* Matches header height for scroll snapping */
+  scroll-padding-top: var(--header-height);
+  /* Matches header height for scroll snapping */
 }
 
 html,
 body {
   height: 100%;
-  scrollbar-width: none; /* Hide scrollbar for Firefox */
-  -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+  scrollbar-width: none;
+  /* Hide scrollbar for Firefox */
+  -ms-overflow-style: none;
+  /* Hide scrollbar for IE/Edge */
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -268,12 +272,14 @@ textarea {
   height: 100%;
   object-fit: cover;
   opacity: 1;
-  transform: scale(1.05); /* Just a slight scale for framing */
+  transform: scale(1.05);
+  /* Just a slight scale for framing */
 }
 
 /* Main sections */
 .main {
-  padding: 0; /* Removed padding to let snap-sections handle it */
+  padding: 0;
+  /* Removed padding to let snap-sections handle it */
 }
 
 .snap-section {
@@ -321,7 +327,7 @@ textarea {
 
 .sectionText {
   margin: 0;
-  max-width: 700px;
+  /*max-width: 700px;*/
   color: rgba(235, 249, 255, 0.68);
   line-height: 1.75;
   font-size: 16px;
@@ -411,41 +417,53 @@ textarea {
 .skillCard--react .skillCard__icon svg {
   color: #4ad6ff;
 }
+
 .skillCard--htmlcss .skillCard__icon svg {
   color: #ff8a6a;
 }
+
 .htmlCssIcon {
   display: inline-flex;
   gap: 10px;
   align-items: center;
 }
+
 .htmlCssIcon__html {
   color: #ff7b58;
 }
+
 .htmlCssIcon__css {
   color: #4db2ff;
 }
+
 .skillCard--javascript .skillCard__icon svg {
   color: #ffd057;
 }
+
 .skillCard--typescript .skillCard__icon svg {
   color: #56a7ff;
 }
+
 .skillCard--redux .skillCard__icon svg {
   color: #a980ff;
 }
+
 .skillCard--git .skillCard__icon svg {
   color: #ff7a5f;
 }
+
 .skillCard--mongodb .skillCard__icon svg {
   color: #6fe08e;
 }
+
 .skillCard--mysql .skillCard__icon svg {
   color: #88d2ff;
 }
+
 .skillCard--docker .skillCard__icon svg {
   color: #74d3ff;
 }
+
 .skillCard--aws .skillCard__icon svg {
   color: #ffcf6d;
 }
@@ -455,7 +473,7 @@ textarea {
   margin-top: 14px;
   display: grid;
   grid-template-columns: 110px 1fr;
-  gap: 16px;
+  gap: 24px;
   align-items: start;
 }
 
@@ -482,7 +500,7 @@ textarea {
 .experienceCard::before {
   content: '';
   position: absolute;
-  left: -26px;
+  left: -13.5px;
   top: 12px;
   bottom: 12px;
   width: 3px;
@@ -504,44 +522,16 @@ textarea {
   font-size: 20px;
 }
 
-.experienceCard__right {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.experienceCard__logo {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  display: grid;
-  place-items: center;
-  background: rgba(244, 252, 255, 0.10);
-  border: 1px solid rgba(235, 249, 255, 0.12);
-  font-weight: 900;
-  color: rgba(244, 252, 255, 0.85);
-}
-
-.experienceCard__plus {
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
-  display: grid;
-  place-items: center;
-  border: 1px solid rgba(235, 249, 255, 0.12);
-  background: rgba(10, 21, 26, 0.24);
-  opacity: 0.85;
-}
-
 .experienceList {
   display: flex;
   flex-direction: column;
   gap: 32px;
   /* Leaves room for the header + section title + section bottom padding */
-  max-height: calc(100vh - var(--header-height) - 160px); 
+  max-height: calc(100vh - var(--header-height) - 160px);
   overflow-y: auto;
   padding-right: 12px;
-  padding-bottom: 20px; /* Small safe area, no need for massive padding anymore */
+  padding-bottom: 20px;
+  /* Small safe area, no need for massive padding anymore */
   /* Thin custom scrollbar */
   scrollbar-width: thin;
   scrollbar-color: rgba(215, 183, 115, 0.3) transparent;
@@ -566,7 +556,8 @@ textarea {
 }
 
 .experienceWrap {
-  margin-bottom: 0 !important; /* Overriding manual margin from App.jsx if any */
+  margin-bottom: 0 !important;
+  /* Overriding manual margin from App.jsx if any */
 }
 
 .experienceCard__company {
@@ -632,7 +623,8 @@ textarea {
   margin-top: 16px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 40px 30px; /* Increased row gap specifically to 40px */
+  gap: 40px 30px;
+  /* Increased row gap specifically to 40px */
 }
 
 .projectCard {
@@ -898,6 +890,7 @@ textarea {
   padding-top: 16px;
   border-top: 1px solid rgba(235, 249, 255, 0.06);
 }
+
 .projectCard__galleryLabel {
   font-size: 10px;
   letter-spacing: 0.05em;
@@ -905,11 +898,13 @@ textarea {
   color: rgba(235, 249, 255, 0.4);
   margin-bottom: 10px;
 }
+
 .projectCard__galleryGrid {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
+
 .projectCard__galleryItem {
   font-size: 11px;
   color: rgba(215, 183, 115, 0.9);
@@ -920,6 +915,7 @@ textarea {
   background: rgba(215, 183, 115, 0.05);
   transition: all 0.25s ease;
 }
+
 .projectCard__galleryItem:hover {
   background: rgba(215, 183, 115, 0.15);
   border-color: rgba(215, 183, 115, 0.6);
@@ -1026,18 +1022,23 @@ textarea {
   .skillsGrid {
     grid-template-columns: repeat(3, 1fr);
   }
+
   .projectsGrid {
     grid-template-columns: 1fr;
   }
+
   .certGrid {
     grid-template-columns: 1fr;
   }
+
   .hero__inner {
     grid-template-columns: 1fr;
   }
+
   .hero__right {
     justify-content: center;
   }
+
   .hero__photoFrame {
     width: min(360px, 86vw);
     height: min(360px, 86vw);
@@ -1048,18 +1049,23 @@ textarea {
   .skillsGrid {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .experienceWrap {
     grid-template-columns: 1fr;
   }
+
   .experienceCard::before {
     display: none;
   }
+
   .contactGrid {
     grid-template-columns: 1fr;
   }
+
   .contactInfoGrid {
     grid-template-columns: 1fr;
   }
+
   .hero__title {
     font-size: 34px;
   }
@@ -1072,7 +1078,8 @@ textarea {
   right: 40px;
   z-index: 999;
   display: flex;
-  flex-direction: column-reverse; /* Button at bottom, list grows up */
+  flex-direction: column-reverse;
+  /* Button at bottom, list grows up */
   align-items: flex-end;
   gap: 16px;
 }
@@ -1083,7 +1090,7 @@ textarea {
   border-radius: 50%;
   background: linear-gradient(135deg, rgba(215, 183, 115, 1), rgba(201, 164, 84, 1));
   border: none;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 20px rgba(215, 183, 115, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(215, 183, 115, 0.4);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -1132,13 +1139,14 @@ textarea {
   align-items: center;
   gap: 12px;
   background: rgba(18, 41, 49, 0.95);
-  padding: 8px 14px 8px 18px; /* 14px right padding perfectly centers the 36px icon above the 64px main button */
+  padding: 8px 14px 8px 18px;
+  /* 14px right padding perfectly centers the 36px icon above the 64px main button */
   border-radius: 30px;
   border: 1px solid rgba(235, 249, 255, 0.15);
   color: rgba(244, 252, 255, 0.95);
   font-size: 14px;
   font-weight: 500;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
   text-decoration: none;
   transition: all 0.2s ease;
 }
